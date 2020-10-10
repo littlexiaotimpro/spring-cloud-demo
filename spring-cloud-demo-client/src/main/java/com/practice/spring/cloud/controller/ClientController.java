@@ -11,18 +11,18 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/home")
+@RequestMapping(value = "/client")
 public class ClientController {
 
     @Autowired
     private RestTemplate restTemplate;
 
-    @RequestMapping(value = "/client/primary/{logNo}")
+    @RequestMapping(value = "/primary/{logNo}")
     public Log selectPrimaryLog(@PathVariable("logNo") String logNo) {
         return restTemplate.getForObject("http://127.0.0.1:8001/home/primary/" + logNo, Log.class);
     }
 
-    @GetMapping(value = "/client/operator/{operator}")
+    @GetMapping(value = "/operator/{operator}")
     public List<Log> selectByOperator(@PathVariable("operator") String operator){
         return (List<Log>)restTemplate.getForObject("http://127.0.0.1:8001/home/operator/" + operator, List.class);
     }
