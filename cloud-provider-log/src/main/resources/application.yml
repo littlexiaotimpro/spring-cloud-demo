@@ -1,0 +1,16 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: cloud-provider-log
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource # 配置数据源类型
+    driver-class-name: com.mysql.cj.jdbc.Driver  # 配置数据库驱动
+    url: jdbc:mysql://127.0.0.1:3306/whoai?useUnicode=true&characterEncoding=UTF8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml # Mybatis 映射文件的扫描路径
+  type-aliases-package: com.practice.spring.cloud.entity # 映射文件对应的映射实体路径

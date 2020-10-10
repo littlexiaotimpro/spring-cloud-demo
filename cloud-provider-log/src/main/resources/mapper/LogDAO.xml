@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.practice.spring.cloud.dao.LogDAO">
+    <resultMap id="BaseResultMap" type="com.practice.spring.cloud.entity.Log">
+        <id column="logNo" jdbcType="INTEGER" property="logno"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="operation" jdbcType="VARCHAR" property="operation"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="createtime" jdbcType="TIMESTAMP" property="createtime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        logNo, operator, `operation`, content, createtime
+    </sql>
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_log
+        where logNo = #{logNo,jdbcType=INTEGER}
+    </select>
+    <select id="selectByOperator" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_log
+        where operator = #{operator,jdbcType=VARCHAR}
+    </select>
+</mapper>
