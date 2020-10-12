@@ -13,6 +13,7 @@
         <module>spring-cloud-demo-client</module>
         <module>cloud-provider-log</module>
         <module>cloud-common-api</module>
+        <module>cloud-eureka-server</module>
     </modules>
 
     <!-- 设置统一属性，管理jar包版本 -->

@@ -12,6 +12,11 @@
     <artifactId>cloud-provider-log</artifactId>
 
     <dependencies>
+        <!-- Eureka 服务提供商 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
         <!-- 引入自己打包的公共包 -->
         <dependency>
             <groupId>org.awesome.spring</groupId>
@@ -56,6 +61,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>

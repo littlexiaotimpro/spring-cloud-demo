@@ -1,2 +1,13 @@
 server:
   port: 80
+
+spring:
+  application:
+    name: spring-cloud-demo-client
+
+eureka:
+  client:
+    register-with-eureka: true # 将当前服务注册进Eureka服务注册中心，默认为 true
+    fetchRegistry: true # 是否从 Eureka Server 抓取已有的注册服务，默认为 true（ps：单节点无所谓，汲取必须设置为true才能配合ribbon使用负载均衡）。
+    serviceUrl:
+      defaultZone: http://localhost:7001/eureka/
