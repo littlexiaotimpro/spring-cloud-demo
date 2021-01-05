@@ -1,0 +1,4 @@
+/cloud-common-api/target/
+/cloud-eureka-server/target/
+/cloud-provider-log/target/
+/spring-cloud-demo-client/target/
