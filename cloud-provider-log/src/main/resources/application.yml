@@ -20,4 +20,4 @@ eureka:
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml # Mybatis 映射文件的扫描路径
-  type-aliases-package: com.practice.spring.cloud.entity # 映射文件对应的映射实体路径
+  type-aliases-package: com.spring.cloud.common.api.entity # 映射文件对应的映射实体路径

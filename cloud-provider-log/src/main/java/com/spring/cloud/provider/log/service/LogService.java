@@ -1,6 +1,6 @@
-package com.practice.spring.cloud.service;
+package com.spring.cloud.provider.log.service;
 
-import com.practice.spring.cloud.entity.Log;
+import com.spring.cloud.common.api.entity.Log;
 
 import java.util.List;
 

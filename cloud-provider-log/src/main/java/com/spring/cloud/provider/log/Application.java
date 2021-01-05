@@ -1,4 +1,4 @@
-package com.practice.spring.cloud;
+package com.spring.cloud.provider.log;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

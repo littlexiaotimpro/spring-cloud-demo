@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.practice.spring.cloud.dao.LogDAO">
-    <resultMap id="BaseResultMap" type="com.practice.spring.cloud.entity.Log">
+<mapper namespace="com.spring.cloud.provider.log.dao.LogDAO">
+    <resultMap id="BaseResultMap" type="com.spring.cloud.common.api.entity.Log">
         <id column="logNo" jdbcType="INTEGER" property="logno"/>
         <result column="operator" jdbcType="VARCHAR" property="operator"/>
         <result column="operation" jdbcType="VARCHAR" property="operation"/>

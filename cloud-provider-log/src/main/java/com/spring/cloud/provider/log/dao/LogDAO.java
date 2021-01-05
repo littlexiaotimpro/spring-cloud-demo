@@ -1,6 +1,6 @@
-package com.practice.spring.cloud.dao;
+package com.spring.cloud.provider.log.dao;
 
-import com.practice.spring.cloud.entity.Log;
+import com.spring.cloud.common.api.entity.Log;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

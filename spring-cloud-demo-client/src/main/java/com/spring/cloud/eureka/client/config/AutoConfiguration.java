@@ -1,4 +1,4 @@
-package com.practice.spring.cloud.config;
+package com.spring.cloud.eureka.client.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

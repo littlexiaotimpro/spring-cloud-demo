@@ -1,6 +1,6 @@
-package com.practice.spring.cloud.controller;
+package com.spring.cloud.eureka.client.controller;
 
-import com.practice.spring.cloud.entity.Log;
+import com.spring.cloud.common.api.entity.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

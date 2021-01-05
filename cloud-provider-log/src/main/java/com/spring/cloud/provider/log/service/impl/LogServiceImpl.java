@@ -1,8 +1,8 @@
-package com.practice.spring.cloud.service.impl;
+package com.spring.cloud.provider.log.service.impl;
 
-import com.practice.spring.cloud.dao.LogDAO;
-import com.practice.spring.cloud.entity.Log;
-import com.practice.spring.cloud.service.LogService;
+import com.spring.cloud.provider.log.service.LogService;
+import com.spring.cloud.provider.log.dao.LogDAO;
+import com.spring.cloud.common.api.entity.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
