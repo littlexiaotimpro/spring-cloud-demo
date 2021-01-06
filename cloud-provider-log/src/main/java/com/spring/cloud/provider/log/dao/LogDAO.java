@@ -9,8 +9,10 @@ import java.util.List;
 @Mapper
 public interface LogDAO {
 
-    Log selectById(@Param("logNo") Integer logNo);
+    Log selectById(@Param("logId") Long logId);
 
     List<Log> selectByOperator(String operator);
+
+    Integer saveLog(Log log);
 
 }

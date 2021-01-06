@@ -2,25 +2,62 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.cloud.provider.log.dao.LogDAO">
     <resultMap id="BaseResultMap" type="com.spring.cloud.common.api.entity.Log">
-        <id column="logNo" jdbcType="INTEGER" property="logno"/>
-        <result column="operator" jdbcType="VARCHAR" property="operator"/>
-        <result column="operation" jdbcType="VARCHAR" property="operation"/>
-        <result column="content" jdbcType="VARCHAR" property="content"/>
-        <result column="createtime" jdbcType="TIMESTAMP" property="createtime"/>
+        <id column="LOG_ID" jdbcType="BIGINT" property="logId"/>
+        <result column="OPERATOR" jdbcType="VARCHAR" property="operator"/>
+        <result column="OPERATION" jdbcType="VARCHAR" property="operation"/>
+        <result column="CONTENT" jdbcType="VARCHAR" property="content"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
     </resultMap>
     <sql id="Base_Column_List">
-        logNo, operator, `operation`, content, createtime
+        LOG_ID, OPERATOR, `OPERATION`, CONTENT, CREATE_TIME
     </sql>
-    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from tb_log
-        where logNo = #{logNo,jdbcType=INTEGER}
+        from cloud_log
+        where LOG_ID = #{logId,jdbcType=INTEGER}
     </select>
     <select id="selectByOperator" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from tb_log
+        from cloud_log
         where operator = #{operator,jdbcType=VARCHAR}
     </select>
+    <insert id="saveLog" parameterType="com.spring.cloud.common.api.entity.Log">
+        insert into cloud_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="logId != null">
+                log_id,
+            </if>
+            <if test="operator != null">
+                operator,
+            </if>
+            <if test="operation != null">
+                `operation`,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="createTime == null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="logId != null">
+                #{logId,jdbcType=BIGINT},
+            </if>
+            <if test="operator != null">
+                #{operator,jdbcType=VARCHAR},
+            </if>
+            <if test="operation != null">
+                #{operation,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime == null">
+                sysdate(),
+            </if>
+        </trim>
+    </insert>
 </mapper>

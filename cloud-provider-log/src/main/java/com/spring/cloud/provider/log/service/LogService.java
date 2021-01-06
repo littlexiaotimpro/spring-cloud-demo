@@ -6,8 +6,10 @@ import java.util.List;
 
 public interface LogService {
 
-    Log selectPrimaryLog(Integer logNo);
+    Log selectPrimaryLog(Long logId);
 
     List<Log> selectByOperator(String operator);
+
+    Integer saveLog(Log log);
 
 }
