@@ -6,6 +6,8 @@ import com.spring.cloud.provider.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 用户查询服务实现
  *
@@ -18,7 +20,12 @@ public class UserQueryServiceImpl implements UserService {
     private UserDAO userDAO;
 
     @Override
-    public User selectByKey(Long userId) {
-        return null;
+    public User findUserByKey(Long userId) {
+        return userDAO.selectByKey(userId);
+    }
+
+    @Override
+    public List<User> findAllUser() {
+        return userDAO.selectAllUser();
     }
 }

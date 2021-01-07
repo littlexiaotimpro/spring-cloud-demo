@@ -5,6 +5,7 @@ import com.spring.cloud.provider.user.dao.UserDAO;
 import com.spring.cloud.provider.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 用户逻辑修改服务实现
@@ -18,12 +19,14 @@ public class UserModifyServiceImpl implements UserService {
     private UserDAO userDAO;
 
     @Override
+    @Transactional
     public Integer saveUser(User user) {
-        return null;
+        return userDAO.saveUser(user);
     }
 
     @Override
+    @Transactional
     public Integer deleteUserByKey(Long userId) {
-        return null;
+        return userDAO.deleteUserByKey(userId);
     }
 }
