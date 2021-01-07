@@ -52,4 +52,11 @@ public class ResponseResult<T> implements Serializable {
         return result;
     }
 
+    public static <K> ResponseResult<K> failed(int code, String message) {
+        ResponseResult<K> result = new ResponseResult<>();
+        result.setCode(code);
+        result.setMessage(message);
+        return result;
+    }
+
 }
