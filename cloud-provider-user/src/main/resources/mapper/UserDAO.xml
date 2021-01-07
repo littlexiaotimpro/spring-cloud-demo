@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.cloud.common.api.entity.User">
-    <resultMap id="BASE_USER_MAP" type="com.spring.cloud.common.api.entity.User">
+    <resultMap id="BaseUserMap" type="com.spring.cloud.common.api.entity.User">
         <id column="USER_ID" jdbcType="BIGINT" property="userId"/>
         <result column="USERNAME" jdbcType="VARCHAR" property="username"/>
         <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
@@ -10,7 +10,18 @@
         <result column="EMAIL" jdbcType="VARCHAR" property="email"/>
         <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
     </resultMap>
-    <sql id="BASE_SQL">
+    <sql id="BaseSQL">
         USER_ID, USERNAME, `PASSWORD`, GENDER, PHONE, EMAIL, CREATE_TIME
     </sql>
+    <select id="findUserByKey" parameterType="java.lang.Long" resultMap="BaseUserMap">
+        select
+        <include refid="BaseSQL"/>
+        from cloud_user
+        where user_id = #{userId, jdbcType=BIGINT}
+    </select>
+    <select id="findAllUser" resultMap="BaseUserMap">
+        select
+        <include refid="BaseSQL"/>
+        from cloud_user
+    </select>
 </mapper>

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/home")
+@RequestMapping(value = "/log")
 public class BaseController {
 
     @Autowired
@@ -27,7 +27,7 @@ public class BaseController {
         return ResponseResult.success("查询成功", logs);
     }
 
-    @PostMapping(value = "/save/log")
+    @PostMapping(value = "/save")
     public ResponseResult<Integer> saveLog(@RequestBody Log log) {
         Integer integer = logService.saveLog(log);
         return ResponseResult.success("新增成功", integer);

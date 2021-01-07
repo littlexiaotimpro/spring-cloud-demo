@@ -17,8 +17,8 @@ public interface UserDAO {
 
     Integer deleteUserByKey(Long userId);
 
-    User selectByKey(Long userId);
+    User findUserByKey(Long userId);
 
-    List<User> selectAllUser();
+    List<User> findAllUser();
 
 }

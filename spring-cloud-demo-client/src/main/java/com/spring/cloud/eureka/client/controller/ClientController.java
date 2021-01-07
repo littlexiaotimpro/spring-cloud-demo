@@ -11,29 +11,29 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping(value = "/client")
 public class ClientController {
 
-    private final String PREFIX_URL = "http://127.0.0.1:8001/home";
+    private final String LOG_PREFIX_URL = "http://127.0.0.1:8001/log";
 
     @Autowired
     private RestTemplate restTemplate;
 
-    @RequestMapping(value = "/primary/{logId}")
+    @RequestMapping(value = "/log/primary/{logId}")
     @SuppressWarnings("rawtypes")
     public ResponseResult selectPrimaryLog(@PathVariable("logId") Long logId) {
-        ResponseEntity<ResponseResult> responseEntity = restTemplate.getForEntity(PREFIX_URL + "/primary/" + logId, ResponseResult.class);
+        ResponseEntity<ResponseResult> responseEntity = restTemplate.getForEntity(LOG_PREFIX_URL + "/primary/" + logId, ResponseResult.class);
         return responseEntity.getBody();
     }
 
-    @GetMapping(value = "/operator/{operator}")
+    @GetMapping(value = "/log/operator/{operator}")
     @SuppressWarnings("rawtypes")
     public ResponseResult selectByOperator(@PathVariable("operator") String operator) {
-        ResponseEntity<ResponseResult> responseEntity = restTemplate.getForEntity(PREFIX_URL + "/operator/" + operator, ResponseResult.class);
+        ResponseEntity<ResponseResult> responseEntity = restTemplate.getForEntity(LOG_PREFIX_URL + "/operator/" + operator, ResponseResult.class);
         return responseEntity.getBody();
     }
 
-    @PostMapping(value = "/save/log")
+    @PostMapping(value = "/log/save")
     @SuppressWarnings("rawtypes")
     public ResponseResult saveLog(@RequestBody Log log) {
-        ResponseEntity<ResponseResult> responseEntity = restTemplate.postForEntity(PREFIX_URL + "/save/log", log, ResponseResult.class);
+        ResponseEntity<ResponseResult> responseEntity = restTemplate.postForEntity(LOG_PREFIX_URL + "/save", log, ResponseResult.class);
         return responseEntity.getBody();
     }
 

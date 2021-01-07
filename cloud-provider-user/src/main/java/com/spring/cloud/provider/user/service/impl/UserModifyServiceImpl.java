@@ -2,7 +2,7 @@ package com.spring.cloud.provider.user.service.impl;
 
 import com.spring.cloud.common.api.entity.User;
 import com.spring.cloud.provider.user.dao.UserDAO;
-import com.spring.cloud.provider.user.service.UserService;
+import com.spring.cloud.provider.user.service.UserModifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author XiaoSi
  */
 @Service
-public class UserModifyServiceImpl implements UserService {
+public class UserModifyServiceImpl implements UserModifyService {
 
     @Autowired
     private UserDAO userDAO;
