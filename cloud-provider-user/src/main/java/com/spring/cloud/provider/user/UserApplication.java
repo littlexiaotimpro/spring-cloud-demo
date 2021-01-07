@@ -4,6 +4,7 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * 用户管理服务启动类
@@ -11,6 +12,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @author XiaoSi
  */
 @SpringBootApplication
+@EnableTransactionManagement
 @EnableEurekaClient
 public class UserApplication {
 

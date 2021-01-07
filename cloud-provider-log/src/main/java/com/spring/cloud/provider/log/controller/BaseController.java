@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(value = "/log")
@@ -18,6 +19,9 @@ public class BaseController {
     @GetMapping(value = "/primary/{logId}")
     public ResponseResult<Log> showPrimaryLog(@PathVariable("logId") Long logId) {
         Log log = logService.selectPrimaryLog(logId);
+        if (Objects.isNull(log)) {
+            return ResponseResult.failed("查询ID: " + logId + "，数据不存在！");
+        }
         return ResponseResult.success("查询成功", log);
     }
 
@@ -29,8 +33,11 @@ public class BaseController {
 
     @PostMapping(value = "/save")
     public ResponseResult<Integer> saveLog(@RequestBody Log log) {
-        Integer integer = logService.saveLog(log);
-        return ResponseResult.success("新增成功", integer);
+        Integer res = logService.saveLog(log);
+        if (Objects.isNull(res) || res.compareTo(0) <= 0) {
+            return ResponseResult.failed("新增日志失败");
+        }
+        return ResponseResult.success("新增日志成功", res);
     }
 
 }
