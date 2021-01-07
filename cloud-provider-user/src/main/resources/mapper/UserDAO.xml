@@ -5,7 +5,7 @@
         <id column="USER_ID" jdbcType="BIGINT" property="userId"/>
         <result column="USERNAME" jdbcType="VARCHAR" property="username"/>
         <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
-        <result column="GENDER" jdbcType="INT" property="gender"/>
+        <result column="GENDER" jdbcType="INTEGER" property="gender"/>
         <result column="PHONE" jdbcType="VARCHAR" property="phone"/>
         <result column="EMAIL" jdbcType="VARCHAR" property="email"/>
         <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>

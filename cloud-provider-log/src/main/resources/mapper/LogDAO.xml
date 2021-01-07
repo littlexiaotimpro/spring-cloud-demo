@@ -15,7 +15,7 @@
         select
         <include refid="Base_Column_List"/>
         from cloud_log
-        where LOG_ID = #{logId,jdbcType=INTEGER}
+        where LOG_ID = #{logId,jdbcType=BIGINT}
     </select>
     <select id="selectByOperator" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
