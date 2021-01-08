@@ -9,6 +9,13 @@
 #      # 设置与注册中心交互的地址，查询服务和注册服务都依赖这个地址
 #      defaultZone: https://server7001.com:7001/eureka/, https://server7002.com:7002/eureka/
 
+spring:
+  # 配置 Spring Security 安全认证的登录用户
+  security:
+    user:
+      name: admin
+      password: 123456
+
 # 通过 --- 区分多环境配置（可以使用多个配置文件实现）
 ---
 server:
