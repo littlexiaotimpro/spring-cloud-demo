@@ -1,11 +1,48 @@
-server:
-  port: 7001
+# 公共配置，服务注册中心相互注册
+#eureka:
+#  client:
+#    # false表示不向注册中心注册自己
+#    register-with-eureka: false
+#    # false表示自己端就是注册中心，职责就是维护服务实例，并不需要去检索服务
+#    fetch-registry: false
+#    serviceUrl:
+#      # 设置与注册中心交互的地址，查询服务和注册服务都依赖这个地址
+#      defaultZone: https://server7001.com:7001/eureka/, https://server7002.com:7002/eureka/
 
+# 通过 --- 区分多环境配置（可以使用多个配置文件实现）
+---
+server:
+  # 服务端口
+  port: 7001
+spring:
+  # 实例名称
+  profiles: server7001
 eureka:
   instance:
-    hostname: localhost # Eureka服务端的实例名称
+    # Eureka服务端的实例名称
+    hostname: server7001.com
   client:
-    register-with-eureka: false # false表示不向注册中心注册自己
-    fetch-registry: false # false表示自己端就是注册中心，职责就是维护服务实例，并不需要去检索服务
-    service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ # 设置与注册中心交互的地址，查询服务和注册服务都依赖这个地址
+    # false表示不向注册中心注册自己
+    register-with-eureka: false
+    # false表示自己端就是注册中心，职责就是维护服务实例，并不需要去检索服务
+    fetch-registry: false
+    serviceUrl:
+      # 设置与注册中心交互的地址，查询服务和注册服务都依赖这个地址
+      defaultZone: https://server7002.com:7002/eureka/
+
+---
+server:
+  port: 7002
+spring:
+  profiles: server7002
+eureka:
+  instance:
+    hostname: server7002.com
+  client:
+    # false表示不向注册中心注册自己
+    register-with-eureka: false
+    # false表示自己端就是注册中心，职责就是维护服务实例，并不需要去检索服务
+    fetch-registry: false
+    serviceUrl:
+      # 设置与注册中心交互的地址，查询服务和注册服务都依赖这个地址
+      defaultZone: https://server7001.com:7001/eureka/

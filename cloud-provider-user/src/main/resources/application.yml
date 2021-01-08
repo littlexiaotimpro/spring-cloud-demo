@@ -7,7 +7,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource # 配置数据源类型
     driver-class-name: com.mysql.cj.jdbc.Driver  # 配置数据库驱动
-    url: jdbc:mysql://127.0.0.1:3306/cloud_demo?useUnicode=true&characterEncoding=UTF8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://127.0.0.1:3306/whoai?useUnicode=true&characterEncoding=UTF8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
 
@@ -16,7 +16,7 @@ eureka:
     register-with-eureka: true # 将当前服务注册进Eureka服务注册中心，默认为 true
     fetchRegistry: true # 是否从 Eureka Server 抓取已有的注册服务，默认为 true（ps：单节点无所谓，汲取必须设置为true才能配合ribbon使用负载均衡）。
     serviceUrl:
-      defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://server7001.com:7001/eureka/, http://server7002.com:7002/eureka/
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml # Mybatis 映射文件的扫描路径
