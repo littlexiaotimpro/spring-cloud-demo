@@ -8,6 +8,17 @@
 #    serviceUrl:
 #      # 设置与注册中心交互的地址，查询服务和注册服务都依赖这个地址
 #      defaultZone: https://server7001.com:7001/eureka/, https://server7002.com:7002/eureka/
+#    enabled: true # 启用eureka客户端
+#    registry-fetch-interval-seconds: 30 #定义去eureka服务端获取服务列表的时间间隔
+#  instance: #eureka客户端实例配置
+#    lease-renewal-interval-in-seconds: 30 #定义服务多久去注册中心续约
+#    lease-expiration-duration-in-seconds: 90 #定义服务多久不去续约认为服务失效
+#    metadata-map:
+#      zone: jiangsu #所在区域
+#    hostname: localhost #服务主机名称
+#    prefer-ip-address: false #是否优先使用ip来作为主机名
+#  server: #eureka服务端配置
+#    enable-self-preservation: false #关闭eureka服务端的保护机制
 
 spring:
   # 配置 Spring Security 安全认证的登录用户
