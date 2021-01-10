@@ -11,3 +11,11 @@ eureka:
     fetchRegistry: true # 是否从 Eureka Server 抓取已有的注册服务，默认为 true（ps：单节点无所谓，汲取必须设置为true才能配合ribbon使用负载均衡）。
     serviceUrl:
       defaultZone: http://localhost:7001/eureka/
+
+# Swagger 属性配置
+swagger:
+  enable: true
+  application-name: ${spring.application.name}
+  version: 1.0
+  description: ${spring.application.name} 整合 swagger 3.0
+  try-host: http://localhost:${server.port}

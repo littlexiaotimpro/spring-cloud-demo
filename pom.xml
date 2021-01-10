@@ -25,6 +25,7 @@
         <junit.version>4.13</junit.version>
         <log4j.version>2.13.3</log4j.version>
         <lombok.version>1.18.14</lombok.version>
+        <swagger.version>3.0.0</swagger.version>
     </properties>
 
     <!-- 依赖管理，子模块继承之后，锁定版本及子module不需要重复定义groupId和version -->
@@ -89,6 +90,22 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${swagger.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

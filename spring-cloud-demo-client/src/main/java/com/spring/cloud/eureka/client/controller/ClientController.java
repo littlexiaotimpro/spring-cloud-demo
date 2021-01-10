@@ -3,11 +3,14 @@ package com.spring.cloud.eureka.client.controller;
 import com.spring.cloud.common.api.dto.ResponseResult;
 import com.spring.cloud.common.api.entity.Log;
 import com.spring.cloud.common.api.entity.User;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+@Api("客户端访问")
 @RestController
 @RequestMapping(value = "/client")
 public class ClientController {
@@ -18,6 +21,7 @@ public class ClientController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @ApiOperation("通过主键获取操作日志")
     @RequestMapping(value = "/log/primary/{logId}")
     @SuppressWarnings("rawtypes")
     public ResponseResult selectPrimaryLog(@PathVariable("logId") Long logId) {
@@ -25,6 +29,7 @@ public class ClientController {
         return responseEntity.getBody();
     }
 
+    @ApiOperation("通过操作用户获取相关操作日志")
     @GetMapping(value = "/log/operator/{operator}")
     @SuppressWarnings("rawtypes")
     public ResponseResult selectByOperator(@PathVariable("operator") String operator) {
@@ -32,6 +37,7 @@ public class ClientController {
         return responseEntity.getBody();
     }
 
+    @ApiOperation("新增操作日志")
     @PostMapping(value = "/log/save")
     @SuppressWarnings("rawtypes")
     public ResponseResult saveLog(@RequestBody Log log) {
@@ -39,6 +45,7 @@ public class ClientController {
         return responseEntity.getBody();
     }
 
+    @ApiOperation("主键查询用户")
     @GetMapping(value = "/user/primary/{userId}")
     @SuppressWarnings("rawtypes")
     public ResponseResult getUserById(@PathVariable("userId") Long userId) {
@@ -46,6 +53,7 @@ public class ClientController {
         return responseEntity.getBody();
     }
 
+    @ApiOperation("查询所有用户")
     @GetMapping(value = "/user/all")
     @SuppressWarnings("rawtypes")
     public ResponseResult getAllUser() {
@@ -53,6 +61,7 @@ public class ClientController {
         return responseEntity.getBody();
     }
 
+    @ApiOperation("新增用户")
     @PostMapping(value = "/user/save")
     @SuppressWarnings("rawtypes")
     public ResponseResult saveUser(@RequestBody User user) {
@@ -60,6 +69,7 @@ public class ClientController {
         return responseEntity.getBody();
     }
 
+    @ApiOperation("删除用户")
     @PostMapping(value = "/user/delete/{userId}")
     @SuppressWarnings("rawtypes")
     public ResponseResult deleteUserByKey(@PathVariable("userId") Long userId) {
