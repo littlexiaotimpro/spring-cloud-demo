@@ -22,7 +22,7 @@ public class ClientController {
     private RestTemplate restTemplate;
 
     @ApiOperation("通过主键获取操作日志")
-    @RequestMapping(value = "/log/primary/{logId}")
+    @GetMapping(value = "/log/primary/{logId}")
     @SuppressWarnings("rawtypes")
     public ResponseResult selectPrimaryLog(@PathVariable("logId") Long logId) {
         ResponseEntity<ResponseResult> responseEntity = restTemplate.getForEntity(LOG_PREFIX_URL + "/primary/" + logId, ResponseResult.class);
