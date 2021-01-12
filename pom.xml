@@ -15,6 +15,7 @@
         <module>cloud-common-api</module>
         <module>cloud-eureka-server</module>
         <module>cloud-provider-user</module>
+        <module>cloud-config-server</module>
     </modules>
 
     <!-- 设置统一属性，管理jar包版本 -->

@@ -1,0 +1,21 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: cloud-config-server
+  cloud:
+    config:
+      server:
+        git: #配置存储配置信息的 Git 仓库
+          uri: # 配置文件对应的 Git 仓库地址
+          username: #Git 用户名称
+          password: #Git 用户密码
+          clone-on-start: true #开启启动时直接从git获取配置
+
+eureka:
+  client:
+    register-with-eureka: true # 将当前服务注册进Eureka服务注册中心，默认为 true
+    fetchRegistry: true # 是否从 Eureka Server 抓取已有的注册服务，默认为 true（ps：单节点无所谓，汲取必须设置为true才能配合ribbon使用负载均衡）。
+    serviceUrl:
+      defaultZone: http://admin:123456@server7001.com:7001/eureka/, http://admin:123456@server7002.com:7002/eureka/
