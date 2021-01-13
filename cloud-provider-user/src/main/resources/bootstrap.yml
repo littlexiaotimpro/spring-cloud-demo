@@ -1,0 +1,20 @@
+# bootstrap.yml（bootstrap.properties）
+#  用来在程序引导时执行，应用于更加早期配置信息读取，如可以使用来配置application.yml中使用到参数等
+# application.yml（application.properties)
+#  应用程序特有配置信息，可以用来配置后续各个模块中需使用的公共参数等。
+# bootstrap.yml 先于 application.yml 加载
+spring:
+  application:
+    name: cloud-provider-user
+
+  # 获取配置信息: /{label}/{application}-{profile}
+  # 获取配置文件信息: /{label}/{application}-{profile}.yml
+  # application：代表应用名称，默认为配置文件中的spring.application.name，如果配置了spring.cloud.config.name，则为该名称；
+  # label：代表分支名称，对应配置文件中的spring.cloud.config.label；
+  # profile：代表环境名称，对应配置文件中的spring.cloud.config.profile。
+  cloud:
+    config: #Config客户端配置
+      profile: dev #启用配置后缀名称
+      label: main #分支名称
+      uri: http://localhost:9001 #配置中心地址
+      name: config #配置文件名称

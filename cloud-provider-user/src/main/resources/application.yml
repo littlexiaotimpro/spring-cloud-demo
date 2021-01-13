@@ -1,20 +1,7 @@
 server:
   port: 8002
 
-# 获取配置信息: /{label}/{application}-{profile}
-# 获取配置文件信息: /{label}/{application}-{profile}.yml
-# application：代表应用名称，默认为配置文件中的spring.application.name，如果配置了spring.cloud.config.name，则为该名称；
-# label：代表分支名称，对应配置文件中的spring.cloud.config.label；
-# profile：代表环境名称，对应配置文件中的spring.cloud.config.profile。
 spring:
-  application:
-    name: cloud-provider-user
-  cloud:
-    config: #Config客户端配置
-      profile: dev #启用配置后缀名称
-      label: dev #分支名称
-      uri: http://localhost:9001 #配置中心地址
-      name: config #配置文件名称
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource # 配置数据源类型
     driver-class-name: com.mysql.cj.jdbc.Driver  # 配置数据库驱动

@@ -1,5 +1,13 @@
+/.idea/
 /cloud-common-api/target/
+/cloud-common-api/cloud-common-api.iml
 /cloud-eureka-server/target/
+/cloud-eureka-server/cloud-eureka-server.iml
 /cloud-provider-log/target/
+/cloud-provider-log/cloud-provider-log.iml
 /spring-cloud-demo-client/target/
+/spring-cloud-demo-client/spring-cloud-demo-client.iml
 /cloud-provider-user/target/
+/cloud-provider-user/cloud-provider-user.iml
+/cloud-config-server/target/
+/cloud-config-server/cloud-config-server.iml

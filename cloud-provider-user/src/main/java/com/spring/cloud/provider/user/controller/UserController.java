@@ -5,6 +5,7 @@ import com.spring.cloud.common.api.entity.User;
 import com.spring.cloud.provider.user.service.UserModifyService;
 import com.spring.cloud.provider.user.service.UserQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,6 +51,14 @@ public class UserController {
             return ResponseResult.failed("删除用户失败");
         }
         return ResponseResult.success("删除用户成功", res);
+    }
+
+    @Value("${config.info}")
+    private String configInfo;
+
+    @GetMapping("/config/info")
+    public ResponseResult<String> getConfigInfo() {
+        return ResponseResult.success("测试信息", configInfo);
     }
 
 }

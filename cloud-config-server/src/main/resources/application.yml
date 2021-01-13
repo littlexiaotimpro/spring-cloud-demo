@@ -8,10 +8,14 @@ spring:
     config:
       server:
         git: #配置存储配置信息的 Git 仓库
-          uri: # 配置文件对应的 Git 仓库地址
-          username: #Git 用户名称
-          password: #Git 用户密码
-          clone-on-start: true #开启启动时直接从git获取配置
+          uri: https://github.com/littlexiaotimpro/spring-cloud-config-demo.git
+          #username: 私有仓库 用户名称
+          #password: 私有仓库 用户密码
+          #开启启动时直接从git获取配置
+          clone-on-start: true
+          # 配置对应应用名称的子目录中搜索路径
+          # application：代表应用名称，默认为配置文件中的spring.application.name，如果配置了spring.cloud.config.name，则为该名称；
+          search-paths: '{application}'
 
 eureka:
   client:
