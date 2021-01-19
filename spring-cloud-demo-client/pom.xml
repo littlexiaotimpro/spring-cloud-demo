@@ -31,6 +31,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- Spring cloud 负载均衡-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+        </dependency>
         <!-- 引入自己打包的公共包 -->
         <dependency>
             <groupId>org.awesome.spring</groupId>
