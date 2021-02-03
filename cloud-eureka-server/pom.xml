@@ -22,12 +22,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <!-- 引入自己打包的公共包 -->
-        <dependency>
-            <groupId>org.awesome.spring</groupId>
-            <artifactId>cloud-common-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
