@@ -6,6 +6,7 @@ import com.spring.cloud.common.api.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -15,8 +16,10 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping(value = "/client")
 public class ClientController {
 
-    private final String LOG_PREFIX_URL = "http://127.0.0.1:8001/log";
-    private final String USER_PREFIX_URL = "http://127.0.0.1:8002/user";
+    @Value("${service-url.cloud-provider-log}")
+    private String LOG_PREFIX_URL;
+    @Value("${service-url.cloud-provider-user}")
+    private String USER_PREFIX_URL;
 
     @Autowired
     private RestTemplate restTemplate;
