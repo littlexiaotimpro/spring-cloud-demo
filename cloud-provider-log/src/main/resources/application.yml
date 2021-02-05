@@ -2,8 +2,6 @@ server:
   port: 8001
 
 spring:
-  application:
-    name: cloud-provider-log
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource # 配置数据源类型
     driver-class-name: com.mysql.cj.jdbc.Driver  # 配置数据库驱动

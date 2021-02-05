@@ -1,4 +1,4 @@
-package com.spring.cloud.eureka.client.config;
+package com.spring.cloud.common.api.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

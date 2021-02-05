@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-@Api("客户端访问")
+@Api("客户端访问控制器")
 @RestController
 @RequestMapping(value = "/client")
 public class ClientController {

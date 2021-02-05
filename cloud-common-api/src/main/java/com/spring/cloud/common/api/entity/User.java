@@ -15,9 +15,14 @@ public class User {
     private Long userId;
     @ApiModelProperty(value = "用户名称")
     private String username;
+    @ApiModelProperty(value = "密码")
     private String password;
+    @ApiModelProperty(value = "性别")
     private int gender;
+    @ApiModelProperty(value = "手机")
     private String phone;
+    @ApiModelProperty(value = "邮箱")
     private String email;
+    @ApiModelProperty(value = "创建事件")
     private Date createTime;
 }

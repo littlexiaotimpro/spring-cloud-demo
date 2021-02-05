@@ -1,7 +1,7 @@
-package com.spring.cloud.eureka.client.config;
+package com.spring.cloud.common.api.config;
 
 import io.swagger.models.auth.In;
-import org.apache.commons.lang.reflect.FieldUtils;
+import org.apache.commons.lang3.reflect.FieldUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootVersion;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -93,7 +93,7 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
     /**
      * 通用拦截器排除swagger设置，所有拦截器都会自动加swagger相关的资源排除信息
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "NullableProblems"})
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         try {
