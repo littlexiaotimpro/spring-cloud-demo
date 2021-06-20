@@ -1,0 +1,21 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-order-service
+
+eureka:
+  client:
+    # 将当前服务注册进Eureka服务注册中心，默认为 true
+    register-with-eureka: true
+    # 是否从 Eureka Server 抓取已有的注册服务，默认为 true（ps：单节点无所谓，汲取必须设置为true才能配合ribbon使用负载均衡）。
+    fetchRegistry: true
+    serviceUrl:
+      # 集群部署
+      defaultZone: http://server7001.com:7001/eureka/,http://server7002.com:7002/eureka/, http://server7003.com:7003/eureka/
+
+# 配置统一的服务调用地址
+# 为了实现多服务负载均衡配置，采用微服务注册中心中所注入的服务名称作为访问地址
+service-url:
+  cloud-payment-service: http://CLOUD-PAYMENT-SERVICE/payment

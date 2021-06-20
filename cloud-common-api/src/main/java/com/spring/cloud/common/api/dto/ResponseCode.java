@@ -7,7 +7,7 @@ public enum ResponseCode {
     /**
      * 访问成功时的状态码
      */
-    SUCCESS(1),
+    SUCCESS(200),
 
     /**
      * 访问失败时的状态码

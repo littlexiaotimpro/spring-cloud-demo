@@ -16,6 +16,11 @@
         <module>cloud-eureka-server</module>
         <module>cloud-provider-user</module>
         <module>cloud-config-server</module>
+        <module>a-cloud-provider-payment</module>
+        <module>a-cloud-consumer-order80</module>
+        <module>a-cloud-eureka-server7001</module>
+        <module>a-cloud-eureka-server7002</module>
+        <module>a-cloud-eureka-server7003</module>
     </modules>
 
     <!-- 设置统一属性，管理jar包版本 -->

@@ -11,3 +11,13 @@
 /cloud-provider-user/cloud-provider-user.iml
 /cloud-config-server/target/
 /cloud-config-server/cloud-config-server.iml
+/a-cloud-provider-payment/target/
+/a-cloud-provider-payment/a-cloud-provider-payment.iml
+/a-cloud-consumer-order80/target/
+/a-cloud-consumer-order80/a-cloud-consumer-order80.iml
+/a-cloud-eureka-server7001/target/
+/a-cloud-eureka-server7001/a-cloud-eureka-server7001.iml
+/a-cloud-eureka-server7002/target/
+/a-cloud-eureka-server7002/a-cloud-eureka-server7002.iml
+/a-cloud-eureka-server7003/target/
+/a-cloud-eureka-server7003/a-cloud-eureka-server7003.iml

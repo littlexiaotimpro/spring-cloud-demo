@@ -46,7 +46,7 @@ eureka:
     fetch-registry: false
     serviceUrl:
       # 设置与注册中心交互的地址，查询服务和注册服务都依赖这个地址
-      defaultZone: https://server7002.com:7002/eureka/
+      defaultZone: http://server7002.com:7002/eureka/
 
 ---
 server:
@@ -63,4 +63,4 @@ eureka:
     fetch-registry: false
     serviceUrl:
       # 设置与注册中心交互的地址，查询服务和注册服务都依赖这个地址
-      defaultZone: https://server7001.com:7001/eureka/
+      defaultZone: http://server7001.com:7001/eureka/
