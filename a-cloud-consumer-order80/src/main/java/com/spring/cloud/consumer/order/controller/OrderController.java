@@ -7,6 +7,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
 @Api("订单模块控制器")
 @RestController
@@ -30,8 +33,11 @@ public class OrderController {
 
     private final RestTemplate restTemplate;
 
-    public OrderController(RestTemplate restTemplate) {
+    private final DiscoveryClient discoveryClient;
+
+    public OrderController(RestTemplate restTemplate, DiscoveryClient discoveryClient) {
         this.restTemplate = restTemplate;
+        this.discoveryClient = discoveryClient;
     }
 
     @ApiOperation("新增订单")
@@ -70,5 +76,22 @@ public class OrderController {
         ResponseEntity<ResponseResult<Payment>> responseEntity = restTemplate.exchange(PAYMENT_URL + "/find/{id}",
                 HttpMethod.GET, null, ParameterizedTypeReference.forType(type), id);
         return responseEntity.getBody();
+    }
+
+    @ApiOperation("服务发现")
+    @GetMapping(value = "/discovery")
+    public Object discovery() {
+        List<String> services = discoveryClient.getServices();
+        for (String service : services) {
+            log.info("****** element: {}", service);
+        }
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-ORDER-SERVICE");
+        for (ServiceInstance instance : instances) {
+            log.info(instance.getServiceId() + "\t"
+                    + instance.getHost() + "\t"
+                    + instance.getPort() + "\t"
+                    + instance.getUri());
+        }
+        return this.discoveryClient;
     }
 }

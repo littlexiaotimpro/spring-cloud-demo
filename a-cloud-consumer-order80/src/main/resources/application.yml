@@ -14,6 +14,9 @@ eureka:
     serviceUrl:
       # 集群部署
       defaultZone: http://server7001.com:7001/eureka/,http://server7002.com:7002/eureka/, http://server7003.com:7003/eureka/
+  instance:
+    instance-id: order80
+    prefer-ip-address: true
 
 # 配置统一的服务调用地址
 # 为了实现多服务负载均衡配置，采用微服务注册中心中所注入的服务名称作为访问地址

@@ -7,9 +7,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Api("支付模块控制器")
@@ -24,8 +27,11 @@ public class PaymentController8001 {
 
     private final PaymentService paymentService;
 
-    public PaymentController8001(PaymentService paymentService) {
+    private final DiscoveryClient discoveryClient;
+
+    public PaymentController8001(PaymentService paymentService, DiscoveryClient discoveryClient) {
         this.paymentService = paymentService;
+        this.discoveryClient = discoveryClient;
     }
 
     @ApiOperation("新增支付信息")
@@ -78,5 +84,22 @@ public class PaymentController8001 {
         }
         log.info("查询数据失败！");
         return ResponseResult.failed("Server: " + serverPort + "，未找到对应数据，【id: " + id + "】！");
+    }
+
+    @ApiOperation("服务发现")
+    @GetMapping(value = "/discovery")
+    public Object discovery() {
+        List<String> services = discoveryClient.getServices();
+        for (String service : services) {
+            log.info("****** element: {}", service);
+        }
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+        for (ServiceInstance instance : instances) {
+            log.info(instance.getServiceId() + "\t"
+                    + instance.getHost() + "\t"
+                    + instance.getPort() + "\t"
+                    + instance.getUri());
+        }
+        return this.discoveryClient;
     }
 }

@@ -16,7 +16,9 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://server7001.com:7001/eureka/,http://server7002.com:7002/eureka/,http://server7003.com:7003/eureka/
-
+  instance:
+    # 访问路径可以显示 IP 地址
+    prefer-ip-address: true
 #eureka:
 #  client:
 #    register-with-eureka: true # 将当前服务注册进Eureka服务注册中心，默认为 true
@@ -29,6 +31,7 @@ mybatis:
   type-aliases-package: com.spring.cloud.common.api.entity # 映射文件对应的映射实体路径
 
 # 多环境服务配置
+# 8001 服务
 ---
 # 指定服务端口
 server:
@@ -38,9 +41,19 @@ spring:
   # 实例名称
   profiles: service8001
 
+eureka:
+  # 指定服务实例名称
+  instance:
+    instance-id: payment8001
+
+# 8002 服务
 ---
 server:
   port: 8002
 
 spring:
   profiles: service8002
+
+eureka:
+  instance:
+    instance-id: payment8002
