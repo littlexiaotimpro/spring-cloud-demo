@@ -14,3 +14,10 @@ eureka:
       # 设置与注册中心交互的地址，查询服务和注册服务都依赖这个地址
       # 集群部署，服务器之间相互注册
       defaultZone: http://server7002.com:7002/eureka/,http://server7003.com:7003/eureka/
+  server:
+    # eureka 的自我保护机制，默认开启（true）
+    # 可能因为网络原因导致服务访问延迟或异常（宕机），服务注册中心不会删除此异常的微服务注册信息，也不会注销任何微服务
+    # 属于 CAP 中的 AP，保证程序的可用性和分区容错性，不保证一致性
+    # 禁用其自我保护机制，确保服务不可用时被及时清除（2000ms）
+    enable-self-preservation: true
+    eviction-interval-timer-in-ms: 2000

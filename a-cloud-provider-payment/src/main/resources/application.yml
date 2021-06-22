@@ -19,12 +19,10 @@ eureka:
   instance:
     # 访问路径可以显示 IP 地址
     prefer-ip-address: true
-#eureka:
-#  client:
-#    register-with-eureka: true # 将当前服务注册进Eureka服务注册中心，默认为 true
-#    fetchRegistry: true # 是否从 Eureka Server 抓取已有的注册服务，默认为 true（ps：单节点无所谓，汲取必须设置为true才能配合ribbon使用负载均衡）。
-#    serviceUrl:
-#      defaultZone: http://admin:123456@server7001.com:7001/eureka/, http://admin:123456@server7002.com:7002/eureka/
+    # Eureka 客户端向服务器发送心跳的间隔时间，单位秒，默认是 30s
+    lease-renewal-interval-in-seconds: 30
+    # Eureka 服务端在收到最后一次心跳后等待时间上限，单位秒，默认为 90s，超时则清除服务
+    lease-expiration-duration-in-seconds: 90
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml # Mybatis 映射文件的扫描路径
