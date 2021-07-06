@@ -21,6 +21,7 @@
         <module>a-cloud-eureka-server7001</module>
         <module>a-cloud-eureka-server7002</module>
         <module>a-cloud-eureka-server7003</module>
+        <module>a-cloud-provider-payment-zk</module>
     </modules>
 
     <!-- 设置统一属性，管理jar包版本 -->

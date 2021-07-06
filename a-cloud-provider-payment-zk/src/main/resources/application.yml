@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: cloud-payment-service
+  cloud:
+    zookeeper:
+      connect-string: 192.168.33.110:2181
+
+# 多环境服务配置
+# 8003 服务
+---
+# 指定服务端口
+server:
+  port: 8003
+
+spring:
+  # 实例名称
+  profiles: service8003
+
+# 8004 服务
+---
+server:
+  port: 8004
+
+spring:
+  profiles: service8004
