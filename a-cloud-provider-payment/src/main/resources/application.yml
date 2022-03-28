@@ -4,7 +4,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource # 配置数据源类型
     driver-class-name: com.mysql.cj.jdbc.Driver  # 配置数据库驱动
-    url: jdbc:mysql://192.168.33.110:3306/cloud_demo?useUnicode=true&characterEncoding=UTF8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/cloud_demo?useUnicode=true&characterEncoding=UTF8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
 
