@@ -21,4 +21,4 @@ eureka:
 # 配置统一的服务调用地址
 # 为了实现多服务负载均衡配置，采用微服务注册中心中所注入的服务名称作为访问地址
 service-url:
-  cloud-payment-service: http://CLOUD-PAYMENT-SERVICE/payment
+  cloud-payment-service: http://CLOUD-BASE-GATEWAY
