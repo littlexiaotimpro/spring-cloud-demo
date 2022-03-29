@@ -11,6 +11,10 @@ spring:
         locator:
           # 默认值为 true，即默认开启从注册中心动态创建路由的功能，利用微服务名进行路由
           enabled: true
+      # 配置全局过滤器，适用于所有的路由
+      defaultFilters:
+        # 在请求路径上增加一个前缀 /payment（做全局配置）
+        - PrefixPath=/payment
       routes:
         # 多个路由匹配时，按顺序取第一个匹配项
         - id: cloud-payment-service-redirect
@@ -19,7 +23,6 @@ spring:
             - Path=/redirect    # 断言，路径匹配
             - Method=GET,POST   # 允许通过的请求类型
           filters:
-            - PrefixPath=/payment # 在请求路径上增加一个前缀 /payment
             - RedirectTo=301, https://cn.bing.com/  # 重定向，status必须是3xx
             #- RedirectTo=302, https://cn.bing.com/
         # 将cloud-payment-service提供的服务隐藏起来，不暴露给客户端，只给客户端暴露 API 网关的地址
@@ -38,7 +41,6 @@ spring:
                 datetime: 2022-03-28T12:00:00.255+08:00[Asia/Shanghai]
           filters:
             # 过滤器的完整的配置方式（查看 GatewayFilterFactory 接口实现，了解具体的参数配置）
-            - PrefixPath=/payment # 在请求路径上增加一个前缀 /payment
             # 熔断，可选 Hystrix、CircuitBreaker
             - name: Hystrix
               args:
