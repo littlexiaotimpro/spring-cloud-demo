@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 @Api("支付模块控制器")
 @RestController
@@ -84,6 +85,18 @@ public class PaymentController8001 {
         }
         log.info("查询数据失败！");
         return ResponseResult.failed("Server: " + serverPort + "，未找到对应数据，【id: " + id + "】！");
+    }
+
+    @ApiOperation("超时")
+    @GetMapping(value = "/timeout")
+    public ResponseResult<String> timeout() {
+        log.info("ServerPort: {}", serverPort);
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return ResponseResult.failed("Server: " + serverPort + "，服务访问超时！");
     }
 
     @ApiOperation("服务发现")

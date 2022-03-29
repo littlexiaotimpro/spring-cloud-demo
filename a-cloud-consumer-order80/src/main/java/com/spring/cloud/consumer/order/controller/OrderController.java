@@ -78,6 +78,15 @@ public class OrderController {
         return responseEntity.getBody();
     }
 
+    @ApiOperation("超时测试")
+    @GetMapping(value = "/payment/timeout")
+    public ResponseResult<String> timeout() {
+        Type type = ParameterizedTypeUtil.forType(ResponseResult.class, String.class);
+        ResponseEntity<ResponseResult<String>> responseEntity = restTemplate.exchange(PAYMENT_URL + "/timeout",
+                HttpMethod.GET, null, ParameterizedTypeReference.forType(type));
+        return responseEntity.getBody();
+    }
+
     @ApiOperation("服务发现")
     @GetMapping(value = "/discovery")
     public Object discovery() {

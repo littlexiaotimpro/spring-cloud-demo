@@ -20,16 +20,47 @@ spring:
           uri: lb://cloud-payment-service
           predicates:
             #以下是断言条件，必选全部符合条件
-            - Path=/find/**     # 断言，路径匹配
+            - Path=/**     # 断言，路径匹配
             - Method=GET,POST   # 允许通过的请求类型
-            # 断言的完整的配置方式（查看RoutePredicateFactory接口实现，了解具体的参数配置）
+            # 断言的完整的配置方式（查看 RoutePredicateFactory 接口实现，了解具体的参数配置）
             - name: After       # 允许在此配置时间之后的请求通过
               args:
                 datetime: 2022-03-28T12:00:00.255+08:00[Asia/Shanghai]
           filters:
-            # 过滤器的完整的配置方式（查看GatewayFilterFactory接口实现，了解具体的参数配置）
-            - PrefixPath=/payment # 在请求路径上增加一个前缀 /payment
+            # 过滤器的完整的配置方式（查看 GatewayFilterFactory 接口实现，了解具体的参数配置）
             #- RedirectTo=302, http://localhost:9002  # 重定向，status必须是3xx
+            - PrefixPath=/payment # 在请求路径上增加一个前缀 /payment
+            # 熔断，可选 Hystrix、CircuitBreaker
+            - name: Hystrix
+              args:
+                name: fetchIngredients
+                fallbackUri: forward:/fallback # 访问的是当前网关服务的 /fallback
+            # 限流
+            - name: RequestRateLimiter
+              args:
+                # 限流过滤器的Bean名称
+                key-resolver: '#{@uriKeyResolver}'
+                # 允许用户每秒处理多少请求
+                redis-rate-limiter.replenishRate: 5
+                # 允许1s内完成的最大请求数
+                redis-rate-limiter.burstCapacity: 3
+
+# 针对全局配置
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+    # 对单独的 Hystrix 的 commandKey 设置超时时间
+    fetchIngredients:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
 
 eureka:
   client:
