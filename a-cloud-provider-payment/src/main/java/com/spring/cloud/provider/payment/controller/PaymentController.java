@@ -9,18 +9,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 @Api("支付模块控制器")
 @RestController
 @RequestMapping(value = "/payment")
-@Profile(value = {"service8002"})
 @Slf4j
-public class PaymentController8002 {
+public class PaymentController {
 
     @Value("${server.port}")
     private String serverPort;
@@ -29,7 +28,7 @@ public class PaymentController8002 {
 
     private final DiscoveryClient discoveryClient;
 
-    public PaymentController8002(PaymentService paymentService, DiscoveryClient discoveryClient) {
+    public PaymentController(PaymentService paymentService, DiscoveryClient discoveryClient) {
         this.paymentService = paymentService;
         this.discoveryClient = discoveryClient;
     }
@@ -84,6 +83,26 @@ public class PaymentController8002 {
         }
         log.info("查询数据失败！");
         return ResponseResult.failed("Server: " + serverPort + "，未找到对应数据，【id: " + id + "】！");
+    }
+
+    @ApiOperation("超时")
+    @GetMapping(value = "/timeout")
+    public ResponseResult<String> timeout() {
+        log.info("ServerPort: {}", serverPort);
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return ResponseResult.failed("Server: " + serverPort + "，服务访问超时！");
+    }
+
+    @ApiOperation("重定向")
+    @GetMapping(value = "/redirect")
+    public ResponseResult<String> redirectTo() {
+        log.info("ServerPort: {}", serverPort);
+        log.info("服务重定向！");
+        return ResponseResult.success("重定向","");
     }
 
     @ApiOperation("服务发现")
