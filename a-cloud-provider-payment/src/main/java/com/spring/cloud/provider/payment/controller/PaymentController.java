@@ -97,14 +97,6 @@ public class PaymentController {
         return ResponseResult.failed("Server: " + serverPort + "，服务访问超时！");
     }
 
-    @ApiOperation("重定向")
-    @GetMapping(value = "/redirect")
-    public ResponseResult<String> redirectTo() {
-        log.info("ServerPort: {}", serverPort);
-        log.info("服务重定向！");
-        return ResponseResult.success("重定向","");
-    }
-
     @ApiOperation("服务发现")
     @GetMapping(value = "/discovery")
     public Object discovery() {
