@@ -4,9 +4,12 @@ package com.spring.cloud.consumer.order.service.impl;
 import com.spring.cloud.common.api.dto.ResponseResult;
 import com.spring.cloud.common.api.entity.Payment;
 import com.spring.cloud.consumer.order.service.PaymentService;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+/**
+ * 实现feign调用接口，用于访问失败时进行回调
+ */
+//@Component
 public class PaymentServiceImpl implements PaymentService {
     @Override
     public ResponseResult<Integer> create(Payment payment) {

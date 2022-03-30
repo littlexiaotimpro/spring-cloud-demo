@@ -2,7 +2,7 @@ package com.spring.cloud.consumer.order.service;
 
 import com.spring.cloud.common.api.dto.ResponseResult;
 import com.spring.cloud.common.api.entity.Payment;
-import com.spring.cloud.consumer.order.service.impl.PaymentServiceImpl;
+import com.spring.cloud.consumer.order.service.impl.PaymentFallBackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 /**
  * 配置FeignClient服务接口，指定的服务为网关
  */
-@FeignClient(value = "CLOUD-BASE-GATEWAY",
-        fallback = PaymentServiceImpl.class)
+@FeignClient(value = "CLOUD-BASE-GATEWAY", fallbackFactory = PaymentFallBackFactory.class)
 public interface PaymentService {
 
     @PostMapping(value = "/create")

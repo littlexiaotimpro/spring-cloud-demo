@@ -23,7 +23,10 @@ feign:
   hystrix:
     enabled: true
   httpclient:
-    # 重定向配置
+    enabled: true
+    # 禁用ssl验证，默认 false
+    disable-ssl-validation: false
+    # 重定向配置，默认 true
     follow-redirects: false
 
 # 服务降级配置
