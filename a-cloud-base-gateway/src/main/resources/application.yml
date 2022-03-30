@@ -9,8 +9,11 @@ spring:
     gateway:
       discovery:
         locator:
-          # 默认值为 true，即默认开启从注册中心动态创建路由的功能，利用微服务名进行路由
-          enabled: true
+          # 默认值为 false，若为 true 开启从注册中心动态创建路由的功能，利用微服务名进行路由
+          # 若如下两个属性都改为 true，则: http://localhost:9002/cloud-payment-service/find/1，也可以正常访问
+          enabled: false
+          # 默认为false，改为 true 表示将请求路径上的服务名配置为小写（服务向注册中心注册时会将名转成大写字符）
+          lower-case-service-id: false
       # 配置全局过滤器，适用于所有的路由
       defaultFilters:
         # 在请求路径上增加一个前缀 /payment（做全局配置）
