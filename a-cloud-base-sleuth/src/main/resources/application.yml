@@ -1,0 +1,40 @@
+server:
+  port: 9411
+
+spring:
+  application:
+    name: cloud-base-zipkin
+  # zipkin 配置
+  # 采集率
+  sleuth:
+    sampler:
+      probability: 1.0
+  # 是否启动zipkin，默认为true
+  zipkin:
+    enabled: true
+    # 支持通过服务发现来定位host name：
+    locator:
+      discovery:
+        enabled: true
+    # 是否启动zipkin地址
+    base-url: http://localhost:9411
+
+#zipkin启动报错无法访问的解决方法 设置为false,默认为true; 关闭自动配置启用所有请求得检测
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
+
+eureka:
+  client:
+    # 将当前服务注册进Eureka服务注册中心，默认为 true
+    register-with-eureka: true
+    # 是否从 Eureka Server 抓取已有的注册服务，默认为 true（ps：单节点无所谓，汲取必须设置为true才能配合ribbon使用负载均衡）。
+    fetchRegistry: true
+    serviceUrl:
+      # 集群部署
+      defaultZone: http://server7001.com:7001/eureka/
+  instance:
+    instance-id: zipkin9411
+    prefer-ip-address: true

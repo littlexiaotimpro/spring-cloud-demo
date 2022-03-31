@@ -24,6 +24,7 @@
         <module>a-cloud-provider-payment-zk</module>
         <module>a-cloud-base-gateway</module>
         <module>a-cloud-consumer-order80-openfeign</module>
+        <module>a-cloud-base-sleuth</module>
     </modules>
 
     <!-- 设置统一属性，管理jar包版本 -->
