@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 /**
  * 配置FeignClient服务接口，指定的服务为网关
  */
-@FeignClient(value = "CLOUD-BASE-GATEWAY", fallbackFactory = PaymentFallBackFactory.class)
+@FeignClient(value = "${feign.serviceId}", fallbackFactory = PaymentFallBackFactory.class)
 public interface PaymentService {
 
     @PostMapping(value = "/create")

@@ -7,8 +7,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FeignConfiguration {
 
+    /**
+     * 指定feign的日志输出级别
+     *
+     * @return FULL
+     */
     @Bean
-    public Logger.Level level(){
+    public Logger.Level level() {
         return Logger.Level.FULL;
     }
 

@@ -20,6 +20,7 @@ eureka:
 
 # feign 启用断路器配置
 feign:
+  serviceId: CLOUD-BASE-GATEWAY
   hystrix:
     enabled: true
   httpclient:
